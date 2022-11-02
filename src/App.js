@@ -37,11 +37,7 @@ function App() {
 
       <div className="container">
         {product.length !== 0 &&
-          product.map((data) => (
-            <div>
-              <CardProduct key={data.id} data={data} />
-            </div>
-          ))}
+          product.map((data) => <CardProduct key={data.id} data={data} />)}
       </div>
 
       <div
