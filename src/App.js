@@ -4,8 +4,20 @@ import { useEffect, useState } from "react";
 import CardProduct from "./CardProduct";
 
 function App() {
-  const [product, setproduct] = useState([{ id: 1 }, { id: 2 }, { id: 3 }]);
+  const [product, setproduct] = useState([]);
   const [pagina, setpagina] = useState(1);
+
+  useEffect(() => {
+    const page = pagina === 1 ? 0 : pagina;
+
+    const requestApi = async () => {
+      const url = `https://api.escuelajs.co/api/v1/products?offset=${page}&limit=10`;
+      const respuesta = await fetch(url);
+      const producto = await respuesta.json();
+      setproduct(producto);
+    };
+    requestApi();
+  }, [pagina]);
 
   return (
     <>
@@ -22,10 +34,7 @@ function App() {
           </h1>
         </div>
 
-        <div>
-          {/* <Paginations setpage={setpage} page={page} /> */}
-          PAGINACION
-        </div>
+        <div>PAGINACION</div>
       </div>
 
       <div className="container">

@@ -1,38 +1,42 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 
-export default function CardProduct() {
+export default function CardProduct({ data }) {
   return (
     <>
-      <div class="container page-wrapper">
-        <div class="page-inner">
-          <div class="row">
-            <div class="el-wrapper">
-              <div class="box-up">
+      <div className="container page-wrapper">
+        <div className="page-inner">
+          <div className="row">
+            <div className="el-wrapper">
+              <div className="box-up">
                 <img
-                  class="img"
-                  src="http://code.slicecrowd.com/labs/4/images/t-shirt.png"
+                  className="img"
+                  style={{ width: "90%" }}
+                  src={data.images[0]}
                   alt=""
                 />
-                <div class="img-info">
-                  <div class="info-inner">
-                    <span class="p-name">I feel like Pablo</span>
-                    <span class="p-company">Yeezy</span>
+                <div className="img-info">
+                  <div className="info-inner">
+                    <span className="p-name">{data.title}</span>
+                    <span className="p-company">{data.category.name}</span>
                   </div>
-                  <div class="a-size">
-                    Available sizes : <span class="size">S , M , L , XL</span>
+                  <div className="a-size">
+                    <span className="" style={{ color: "black" }}>
+                      {data.description}
+                    </span>
                   </div>
                 </div>
               </div>
 
-              <div class="box-down">
-                <div class="h-bg">
-                  <div class="h-bg-inner"></div>
+              <div className="box-down">
+                <div className="h-bg">
+                  <div className="h-bg-inner"></div>
                 </div>
 
-                <a class="cart" href="#">
-                  <span class="price">$120</span>
-                  <span class="add-to-cart">
-                    <span class="txt">Add in cart</span>
+                <a className="cart" href="#">
+                  <span className="price">${data.price}</span>
+                  <span className="add-to-cart">
+                    <span className="txt">Agregar al carrito</span>
                   </span>
                 </a>
               </div>
